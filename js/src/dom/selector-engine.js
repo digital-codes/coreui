@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------
- * CoreUI (v4.2.6): dom/selector-engine.js
- * Licensed under MIT (https://coreui.io/license)
+ * CoreUI dom/selector-engine.js
+ * Licensed under MIT (https://github.com/coreui/coreui/blob/main/LICENSE)
  *
  * This is a modified version of the Bootstrap's dom/selector-engine.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
@@ -29,10 +29,10 @@ const getSelector = element => {
       hrefAttribute = `#${hrefAttribute.split('#')[1]}`
     }
 
-    selector = hrefAttribute && hrefAttribute !== '#' ? hrefAttribute.trim() : null
+    selector = hrefAttribute && hrefAttribute !== '#' ? parseSelector(hrefAttribute.trim()) : null
   }
 
-  return parseSelector(selector)
+  return selector
 }
 
 const SelectorEngine = {

@@ -1,7 +1,7 @@
 /*!
-  * CoreUI selector-engine.js v4.2.6 (https://coreui.io)
+  * CoreUI selector-engine.js v4.3.2 (https://coreui.io)
   * Copyright 2023 The CoreUI Team (https://github.com/orgs/coreui/people)
-  * Licensed under MIT (https://coreui.io)
+  * Licensed under MIT (https://github.com/coreui/coreui/blob/main/LICENSE)
   */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('../util/index.js')) :
@@ -11,13 +11,14 @@
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v4.2.6): dom/selector-engine.js
-   * Licensed under MIT (https://coreui.io/license)
+   * CoreUI dom/selector-engine.js
+   * Licensed under MIT (https://github.com/coreui/coreui/blob/main/LICENSE)
    *
    * This is a modified version of the Bootstrap's dom/selector-engine.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
    * --------------------------------------------------------------------------
    */
+
   const getSelector = element => {
     let selector = element.getAttribute('data-coreui-target');
     if (!selector || selector === '#') {
@@ -35,9 +36,9 @@
       if (hrefAttribute.includes('#') && !hrefAttribute.startsWith('#')) {
         hrefAttribute = `#${hrefAttribute.split('#')[1]}`;
       }
-      selector = hrefAttribute && hrefAttribute !== '#' ? hrefAttribute.trim() : null;
+      selector = hrefAttribute && hrefAttribute !== '#' ? index_js.parseSelector(hrefAttribute.trim()) : null;
     }
-    return index_js.parseSelector(selector);
+    return selector;
   };
   const SelectorEngine = {
     find(selector, element = document.documentElement) {
